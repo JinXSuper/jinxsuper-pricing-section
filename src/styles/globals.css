@@ -1,0 +1,201 @@
+/* Global glass morphism styles */
+
+@import "tailwindcss";
+@config "../../tailwind.config.ts";
+
+:root {
+  --glass-bg: rgba(12, 12, 14, 0.5);
+  --glass-border: rgba(255, 255, 255, 0.08);
+  --glass-shadow: rgba(0, 0, 0, 0.9);
+  --glass-reflection: rgba(255, 255, 255, 0.03);
+}
+
+@utility glass-morphism {
+  background: var(--glass-bg);
+  backdrop-filter: blur(32px) saturate(180%);
+  border: 1px solid var(--glass-border);
+  box-shadow: 
+    0 25px 50px -12px var(--glass-shadow),
+    0 4px 6px -4px rgba(0, 0, 0, 0.5),
+    inset 0 1px 0 var(--glass-reflection);
+  border-radius: 20px;
+  position: relative;
+  overflow: hidden;
+  transition: all 0.35s cubic-bezier(0.22, 1, 0.36, 1);
+
+  /* Realistic top-down light reflection */
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 10%;
+    right: 10%;
+    height: 1px;
+    background: linear-gradient(90deg, transparent 0%, rgba(255, 255, 255, 0.15) 50%, transparent 100%);
+    z-index: 1;
+    pointer-events: none;
+  }
+
+  /* Top-down gradient light */
+  &::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(180deg, rgba(255, 255, 255, 0.04) 0%, transparent 35%);
+    pointer-events: none;
+    z-index: 1;
+  }
+
+  &:hover {
+    background: rgba(16, 16, 18, 0.65);
+    border-color: rgba(255, 255, 255, 0.12);
+
+    &::after {
+      background: linear-gradient(180deg, rgba(255, 255, 255, 0.08) 0%, transparent 40%);
+    }
+    transform: translateY(-2px);
+    box-shadow: 
+      0 35px 60px -15px rgba(0, 0, 0, 0.95),
+      0 8px 15px -5px rgba(0, 0, 0, 0.6),
+      inset 0 1px 0 rgba(255, 255, 255, 0.06);
+  }
+}
+
+.glass-button {
+  @apply glass-morphism px-6 py-3 rounded-xl text-white transition-all;
+  @apply active:scale-95;
+  @apply focus:outline-none;
+  background: rgba(255, 255, 255, 0.04);
+  backdrop-filter: blur(8px);
+  font-weight: 600;
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  
+  &:hover {
+    background-color: rgba(255, 255, 255, 0.08);
+  }
+
+  &.primary {
+    background: rgba(255, 255, 255, 0.08);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    box-shadow: 0 10px 30px -5px rgba(0, 0, 0, 0.5);
+    
+    &:hover {
+      background: rgba(255, 255, 255, 0.12);
+      border-color: rgba(255, 255, 255, 0.2);
+    }
+  }
+}
+
+/* Font Weights — Only Light (300) and Semibold (600) */
+@utility geist-light {
+  font-weight: 300;
+  letter-spacing: -0.01em;
+}
+
+@utility geist-semibold {
+  font-weight: 600;
+  letter-spacing: -0.02em;
+}
+
+@utility pricing-feature {
+  font-weight: 300;
+  color: rgba(255, 255, 255, 0.5);
+  font-size: 13px;
+  line-height: 1.6;
+  letter-spacing: -0.01em;
+}
+
+/* Background Decorations */
+.bg-text-watermark {
+  user-select: none;
+  pointer-events: none;
+  font-size: 22vw;
+  font-weight: 600;
+  line-height: 1;
+  color: rgba(255, 255, 255, 0.025);
+  text-align: center;
+  position: absolute;
+  top: 2%;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 0;
+  white-space: nowrap;
+  letter-spacing: -0.06em;
+}
+
+/* Realistic top-down ambient light */
+.top-light {
+  position: absolute;
+  top: -200px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 80vw;
+  height: 500px;
+  background: radial-gradient(ellipse at center top, rgba(255, 255, 255, 0.03) 0%, transparent 70%);
+  filter: blur(40px);
+  z-index: 0;
+  pointer-events: none;
+}
+
+.card-grid-texture {
+  position: absolute;
+  inset: 0;
+  background-image: 
+    linear-gradient(to right, rgba(255, 255, 255, 0.02) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(255, 255, 255, 0.02) 1px, transparent 1px);
+  background-size: 20px 20px;
+  mask-image: linear-gradient(to bottom, black 30%, transparent 80%);
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* Body and Global */
+body {
+  background: #050507;
+  min-height: 100vh;
+  color: white;
+  overflow-x: hidden;
+  @apply font-sans;
+}
+
+/* Tabular nums */
+.tabular-nums {
+  font-variant-numeric: tabular-nums;
+}
+
+/* Professional Footer */
+.minimal-footer {
+  border-top: 1px solid rgba(255, 255, 255, 0.04);
+  @apply py-10 w-full flex flex-col md:flex-row justify-between items-center gap-4 px-8 text-white/30;
+}
+
+.footer-logo {
+  font-weight: 600;
+  color: rgba(255, 255, 255, 0.6);
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  font-size: 11px;
+}
+
+.footer-nav {
+  @apply flex gap-6;
+  font-weight: 300;
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+}
+
+.footer-nav-link {
+  @apply transition-colors duration-200 hover:text-white/60;
+}
+
+/* Accessibility */
+@media (prefers-reduced-motion: reduce) {
+  *, ::before, ::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}

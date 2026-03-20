@@ -1,0 +1,47 @@
+{
+  "name": "liquid-glass-react",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint",
+    "test": "jest"
+  },
+  "dependencies": {
+    "@heroicons/react": "latest",
+    "@types/three": "^0.183.1",
+    "clsx": "latest",
+    "framer-motion": "^11.0.0",
+    "geist": "^1.7.0",
+    "liquid-glass-react": "^1.1.1",
+    "locomotive-scroll": "latest",
+    "lucide-react": "latest",
+    "next": "16.2.0",
+    "postprocessing": "^6.38.3",
+    "react": "19.0.0",
+    "react-dom": "19.0.0",
+    "tailwind-merge": "latest",
+    "three": "^0.183.2",
+    "typescript": "^5.0.0"
+  },
+  "devDependencies": {
+    "@tailwindcss/postcss": "latest",
+    "@testing-library/jest-dom": "latest",
+    "@testing-library/react": "latest",
+    "@types/node": "^20.0.0",
+    "@types/react": "^19.0.0",
+    "@types/react-dom": "^19.0.0",
+    "autoprefixer": "latest",
+    "eslint": "latest",
+    "eslint-config-next": "latest",
+    "jest": "latest",
+    "postcss": "latest",
+    "prettier": "latest",
+    "prettier-plugin-tailwindcss": "latest",
+    "storybook": "latest",
+    "tailwindcss": "4.2.2"
+  }
+}
