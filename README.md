@@ -48,10 +48,6 @@ A modern, responsive pricing section component built with React and Tailwind CSS
 - 200 GB storage
 - 24/7 expert support
 
-## Documentation
-
-See the implementation details in [walkthrough.md](./walkthrough.md).
-
 ## License
 
 Open source. Feel free to use in your projects.
